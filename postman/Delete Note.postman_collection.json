@@ -1,0 +1,385 @@
+{
+	"info": {
+		"_postman_id": "f29c2878-f740-4d83-b56f-4ef26ed66e15",
+		"name": "Delete Note",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User logins with username and password",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson.userName).to.eql(pm.collectionVariables.get(\"userName\"));",
+							"    pm.expect(responseJson.password).to.eql(pm.collectionVariables.get(\"userPassword\"));",
+							"    ",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"userName\": \"{{userName}}\",\n   \"password\": \"{{userPassword}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User adds note.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson.name).to.eql(pm.collectionVariables.get(\"noteName\"));",
+							"    pm.expect(responseJson.text).to.eql(pm.collectionVariables.get(\"noteText\"));",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"name\": \"{{noteName}}\",\n   \"text\": \"{{noteText}}\" \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/note?userName={{userName}}&userPassword={{userPassword}}",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"note"
+					],
+					"query": [
+						{
+							"key": "userName",
+							"value": "{{userName}}"
+						},
+						{
+							"key": "userPassword",
+							"value": "{{userPassword}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User refresh his information buy doing login one more time.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson.userName).to.eql(pm.collectionVariables.get(\"userName\"));",
+							"    pm.expect(responseJson.password).to.eql(pm.collectionVariables.get(\"userPassword\"));",
+							"    pm.expect(responseJson.notesList.length).to.eql(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"userName\": \"{{userName}}\",\n   \"password\": \"{{userPassword}}\" \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User adds note",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson.name).to.eql(pm.collectionVariables.get(\"noteName1\"));",
+							"    pm.expect(responseJson.text).to.eql(pm.collectionVariables.get(\"noteText1\"));",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"name\": \"{{noteName1}}\",\n   \"text\": \"{{noteText1}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/note?userName={{userName}}&userPassword={{userPassword}}",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"note"
+					],
+					"query": [
+						{
+							"key": "userName",
+							"value": "{{userName}}"
+						},
+						{
+							"key": "userPassword",
+							"value": "{{userPassword}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User refresh his information buy doing login one more time.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson.userName).to.eql(pm.collectionVariables.get(\"userName\"));",
+							"    pm.expect(responseJson.password).to.eql(pm.collectionVariables.get(\"userPassword\"));",
+							"    pm.expect(responseJson.notesList.length).to.eql(2);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"userName\": \"{{userName}}\",\n   \"password\": \"{{userPassword}}\" \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User delete note",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson.name).to.eql(pm.collectionVariables.get(\"noteName\"));",
+							"    pm.expect(responseJson.text).to.eql(pm.collectionVariables.get(\"noteText\"));",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/note?userName={{userName}}&userPassword={{userPassword}}&noteName={{noteName}}",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"note"
+					],
+					"query": [
+						{
+							"key": "userName",
+							"value": "{{userName}}"
+						},
+						{
+							"key": "userPassword",
+							"value": "{{userPassword}}"
+						},
+						{
+							"key": "noteName",
+							"value": "{{noteName}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User refresh his information buy doing login one more time and notes number was decreased.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson.userName).to.eql(pm.collectionVariables.get(\"userName\"));",
+							"    pm.expect(responseJson.password).to.eql(pm.collectionVariables.get(\"userPassword\"));",
+							"    pm.expect(responseJson.notesList.length).to.eql(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"userName\": \"{{userName}}\",\n   \"password\": \"{{userPassword}}\" \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "userPassword",
+			"value": "1234"
+		},
+		{
+			"key": "userName",
+			"value": "Ivan"
+		},
+		{
+			"key": "noteName",
+			"value": "meeting"
+		},
+		{
+			"key": "noteText",
+			"value": "house"
+		},
+		{
+			"key": "noteName1",
+			"value": "danse"
+		},
+		{
+			"key": "noteText1",
+			"value": "evening"
+		}
+	]
+}

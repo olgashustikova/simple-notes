@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+<body>
+
+<div id="login-form-root"></div>
+<div id="notes-form-root"></div>
+
+<template id="login-form-template">
+    <div id="login-form">
+        <div class="row justify-content-center">
+            <div class=" col-3">
+                <form action="javascript:void(0);">
+                    <div class="form-group">
+                        <label for="inputLogin">User name</label>
+                        <input type="text" class="form-control" id="inputLogin" aria-describedby="emailHelp">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword">Password</label>
+                        <input type="password" class="form-control" id="inputPassword">
+                    </div>
+                    <button type="submit" onclick="login()" class="btn btn-primary">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</template>
+<template id="notes-form-template">
+    <div id="notes-form">
+        <div class="row justify-content-center">
+            <div class="col-1">
+                <p class="align-bottom" id="userNameText">HELLO</p>
+            </div>
+            <div class="col-1">
+                <button type="submit" onclick="createNoteForm()" id="addNote" class="btn btn-primary mb-2">Add note</button>
+            </div>
+            <div class="col-1">
+                <button type="submit" onclick="logOut()" id="logOut" class="btn btn-primary mb-2">Log Out</button>
+            </div>
+        </div>
+    </div>
+    <div id="add-notes-form"></div>
+    <div id="notes-widget"></div>
+</template>
+<template id="note-widget-template">
+    <div id="note-widget">
+        <div class="row justify-content-center">
+            <div class="col-2">
+                <div class="card bg-light mb-3" style="max-width: 18rem;">
+                    <div class="row">
+                        <div class="col"></div>
+                        <div class="col-4">
+                            <button  id="deleteButton" class="btn btn-primary">Delete</button>
+                        </div>
+                    </div>
+                    <div class="card-header">Header</div>
+
+                    <div class="card-body">
+                        <h5 class="card-title"> </h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+<template id="add-note-form-template">
+    <div id="add-note-form">
+        <div class="row justify-content-center">
+            <div class=" col-3">
+                <form action="javascript:void(0);">
+                    <div class="form-group">
+                        <label for="inputLogin">Name</label>
+                        <input type="text" class="form-control" id="addNoteName" aria-describedby="emailHelp">
+                    </div>
+                    <div class="form-group">
+                        <label for="addNoteText">Text</label>
+                        <textarea class="form-control" id="addNoteText" rows="3"></textarea>
+                    </div>
+                    <button type="submit" onclick="addNote()" id ="addNewNote" class="btn btn-primary">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</template>
+
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="/index.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+</html>
