@@ -11,7 +11,13 @@ The project allows user to create notes. There is not database, notes are saved 
 
 **To compile:**
 
-mvn clean package spring-boot:repackage
+
+mvn clean package spring-boot:repackage -DargLine="-D**WEB_DRIVER_TYPE**=**WEB_DRIVER_PATH**"
+
+for example:
+
+mvn clean package spring-boot:repackage -DargLine="-Dwebdriver.chrome.driver=/opt/chromedriver/chromedriver"
+
 
 **To run:**
 
