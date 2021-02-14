@@ -18,3 +18,5 @@ mvn clean package spring-boot:repackage
 go to **target** folder
 
 java -jar simple-notes-0.0.1-SNAPSHOT.jar
+
+**localhost:8080** should be available
