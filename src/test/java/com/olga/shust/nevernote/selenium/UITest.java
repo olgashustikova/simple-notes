@@ -27,7 +27,6 @@ public class UITest {
 
     @BeforeEach
     public void init() {
-        System.setProperty("webdriver.chrome.driver","/opt/chromedriver/chromedriver");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
